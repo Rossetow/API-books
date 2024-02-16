@@ -1,0 +1,41 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.container { 
+    display: flex;
+    justify-content: center;
+}
+
+#book-form{
+    
+}
+
+#book-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    width: 50vw;
+    /* box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.404); */
+    border-radius: 19px;
+    padding: 15px;
+}
+
+#book-form input{
+    height: 40px;
+}
+
+input{
+    border-radius: 10px;
+    margin-top: 20px;
+    border: none;
+    height: 10%;
+    display: flex;
+    padding: 4px;
+    background-color: #EEEEEE;
+}
+
+.btn {
+    background-color: blue;
+}

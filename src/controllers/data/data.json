@@ -1,0 +1,21 @@
+{
+  "Books": [
+    {
+      "id": 1,
+      "title": "LKNLKNKL",
+      "author": "KLLKNLKN",
+      "pages": 98989,
+      "edition": "LKNKLNLK",
+      "holder": ""
+    },
+    {
+      "id": 3,
+      "title": "lklnk",
+      "author": "ljklj",
+      "pages": 3,
+      "edition": "lknkln",
+      "avaible": true,
+      "holder": ""
+    }
+  ]
+}
