@@ -19,6 +19,7 @@ function listBooks (){
             const tdEdition = document.createElement('td')
             const tdAvaible = document.createElement('td')
             const tdHolder = document.createElement('td')
+            const tdCover = document.createElement('td')
             const tdButton = document.createElement('td')
 
             th.setAttribute('scope', 'row')
@@ -40,6 +41,11 @@ function listBooks (){
             tdAvaible.innerHTML = avaible
             tdHolder.innerHTML = book.holder
 
+            const imgCover = document.createElement('img')
+            imgCover.setAttribute('id', 'img-'+book.id)
+            imgCover.setAttribute('src', book.cover)
+            tdCover.appendChild(imgCover)
+
             // li.innerHTML = `Title - ${book.title}  |  Author - ${book.author}  |  Pages - ${book.pages}  |  Edition - ${book.edition}  |  Avaible - ${avaible}  |  Holder - ${book.holder}  |`
 
             const deleteButton = document.createElement('button')
@@ -55,6 +61,7 @@ function listBooks (){
             tr.appendChild(tdEdition)
             tr.appendChild(tdAvaible)
             tr.appendChild(tdHolder)
+            tr.appendChild(tdCover)
             tr.appendChild(tdButton)
 
             tbody.appendChild(tr)
@@ -70,17 +77,22 @@ function deleteBook (id){
     fetch(`http://localhost:3000/books/${id}`, {
         method: 'DELETE',
     })
-    .then(orderIds())
+    .then(listBooks())
     .catch(error => console.log('Error:' + error))
 }
 
 
+
 bookForm.addEventListener('submit', (e) => {
     e.preventDefault();
+
+    console.log(document.getElementById('cover'))
+
     const title = document.getElementById("title").value
     const author = document.getElementById("author").value
     const pages = parseInt(document.getElementById("pages").value)
     const edition = document.getElementById("edition").value
+    const cover = document.getElementById("cover").value
     const avaible = true
     const holder = ""
     fetch('http://localhost:3000/books', {
@@ -88,7 +100,7 @@ bookForm.addEventListener('submit', (e) => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({id: null, title: title, author: author, pages: pages, edition: edition, avaible: avaible, holder: holder
+            body: JSON.stringify({id: null, title: title, author: author, pages: pages, edition: edition, avaible: avaible, holder: holder, cover: cover
             }),
     })
     .then(response => response.json())
@@ -98,30 +110,3 @@ bookForm.addEventListener('submit', (e) => {
     })
     .catch(error => console.log('Error:' + error))
 })
-
-function orderIds(){
-    console.log("oi, deletei e estou atualizando")
-    fetch('http://localhost:3000/books')
-    .then(response => response.json())
-    .then(data => {
-        let id = 1
-        console.log(id)
-
-        data.forEach(book => {
-            console.log(book)
-            console.log(book.id)
-            fetch(`http://localhost:3000/books/${book.id}`, {
-                method: 'PUT',
-                headers: {
-                'Content-Type': 'application/json',
-                },
-                    body: JSON.stringify({id:id
-                }),
-                })
-                .then(console.log('DEU PUT'))
-                .catch(error => console.log('Error:' + error))
-        })
-    })
-    .then(listBooks())
-    .catch(error => console.log('Err0', error));
-}

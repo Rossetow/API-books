@@ -9,17 +9,36 @@ const cors = require('cors')
 
 server.use(cors())
 
+const swagger = require('swagger-ui-express')
+
+const swaggerPath = require('./swagger/swagger.json')
+
+server.use('/docs', swagger.serve, swagger.setup(swaggerPath))
+
+let idBook 
+
+
+if(data.Books.length === 0){
+    idBook = 1
+} else {
+    idBook = data.Books[data.Books.length - 1].id
+}
+
+console.log(idBook)
+
 server.listen(3000, () => {
     console.log('O server está online')
 })
 
 server.post('/books', (req, res) => {
     const newBook = req.body
+    console.log(newBook)
 
     if(!newBook.title || !newBook.author || newBook.pages<=0 || !newBook.edition){
         return res.status(400).json({message: "Invalid book, check informations"})
     } else {
-        newBook.id = data.Books.length +1
+        idBook++
+        newBook.id = idBook
         data.Books.push(newBook)
         saveData(data)
 
@@ -27,9 +46,21 @@ server.post('/books', (req, res) => {
     }
 })
 
-server.get('/books', (req, res) => {
+server.get('/books/:id?', (req, res) => {
+
+    const bookId = parseInt(req.params.id)
+
+    if(bookId){
+        const indexBook = data.Books.findIndex(book => book.id === bookId)
+        if(indexBook === -1){
+            return res.status(404).json({message: "Book not found"})
+        }
+        return res.json(data.Books[indexBook])
+    }
+    
     return res.json(data.Books)
 })
+
 
 server.put('/books/:id', (req, res) => {
     const bookId = parseInt(req.params.id)
@@ -64,7 +95,19 @@ server.delete('/books/:id', (req, res) => {
 
     data.Books = data.Books.filter(b => b.id !== id)
 
+    if(id === -1){
+        return res.status(404).json({message: "Book not found"})
+    }
+
+    let idAtt = 1
+    data.Books.forEach(element => {
+        console.log('oi, atualizadno')
+        element.id = idAtt
+        idAtt++
+    });
+
     saveData(data)
+
     return res.status(200).json({message: "Book deleted with success"})
 })
 

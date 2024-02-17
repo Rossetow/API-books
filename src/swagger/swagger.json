@@ -1,0 +1,146 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Books",
+      "version": "1.0.0",
+      "description": "API for controlling book's registers"
+    },
+    "paths": {
+      "/books": {
+        "get": {
+          "summary": "Get registered books",
+          "responses": {
+            "200": {
+              "description": "List books"
+            }
+          }
+        },
+        "post": {
+          "summary": "Create new book",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Books"
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Books saved successfully!"
+            },
+            "400": {
+              "description": "Invalid book, check informations"
+            }
+          }
+        }
+      },
+      "/books/{id}": {
+        "get": {
+          "summary": "Get informations by ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Information got successfully"
+            },
+            "404": {
+              "description": "Book not found"
+            }
+          }
+        },
+        "put": {
+          "summary": "Update information by ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Books"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Book updated successfully"
+            },
+            "404": {
+              "description": "Book not found"
+            }
+          }
+        },
+        "delete": {
+          "summary": "Delete book by ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "204": {
+              "description": "Book deleted with success"
+            },
+            "404": {
+              "description": "Book not found"
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "Books": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "author": {
+              "type": "string"
+            },
+            "pages": {
+                "type": "integer"
+            },
+            "edition": {
+                "type": "string"
+            },
+            "avaible": {
+                "type": "boolean"
+            },
+            "holder": {
+                "type": "string"
+            },
+            "cover": {
+                "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }

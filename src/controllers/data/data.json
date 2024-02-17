@@ -4,18 +4,61 @@
       "id": 1,
       "title": "LKNLKNKL",
       "author": "KLLKNLKN",
-      "pages": 98989,
+      "pages": "98989",
       "edition": "LKNKLNLK",
-      "holder": ""
+      "holder": "",
+      "avaible": false,
+      "cover": ""
+    },
+    {
+      "id": 2,
+      "title": "khkhjh",
+      "author": "nkjn",
+      "pages": "897987",
+      "edition": "bgseg",
+      "avaible": true,
+      "holder": "",
+      "cover": ""
     },
     {
       "id": 3,
-      "title": "lklnk",
-      "author": "ljklj",
-      "pages": 3,
-      "edition": "lknkln",
+      "title": "hh",
+      "author": "hlk",
+      "pages": 8,
+      "edition": "kjbk",
       "avaible": true,
-      "holder": ""
+      "holder": "",
+      "cover": ""
+    },
+    {
+      "id": 4,
+      "title": "kjlkj",
+      "author": "lkklj",
+      "pages": 90,
+      "edition": "oljlj",
+      "avaible": true,
+      "holder": "",
+      "cover": ""
+    },
+    {
+      "id": 5,
+      "title": "oihjlij",
+      "author": "khkhk",
+      "pages": 7,
+      "edition": "ikjbk",
+      "avaible": true,
+      "holder": "",
+      "cover": "../images/"
+    },
+    {
+      "id": 6,
+      "title": "ohhh",
+      "author": "ohihi",
+      "pages": 77,
+      "edition": "kjbjk",
+      "avaible": true,
+      "holder": "",
+      "cover": "../img/cover1.webp"
     }
   ]
 }

@@ -21,6 +21,7 @@ function listBooks(){
             const tdEdition = document.createElement('td')
             const tdAvaible = document.createElement('td')
             const tdHolder = document.createElement('td')
+            const tdCover = document.createElement('td')
             const tdButton = document.createElement('td')
 
             th.setAttribute('scope', 'row')
@@ -42,12 +43,15 @@ function listBooks(){
             tdAvaible.innerHTML = avaible
             tdHolder.innerHTML = book.holder
 
+
             tdTitle.setAttribute('id', `title-${book.id}`)
             tdAuthor.setAttribute('id', `author-${book.id}`)
             tdPages.setAttribute('id', `pages-${book.id}`)
             tdEdition.setAttribute('id', `edition-${book.id}`)
             tdAvaible.setAttribute('id', `avaible-${book.id}`)
             tdHolder.setAttribute('id', `holder-${book.id}`)
+            tdCover.setAttribute('id', `cover-${book.id}`)
+
 
             // li.innerHTML = `Title - ${book.title}  |  Author - ${book.author}  |  Pages - ${book.pages}  |  Edition - ${book.edition}  |  Avaible - ${avaible}  |  Holder - ${book.holder}  |`
 
@@ -57,6 +61,11 @@ function listBooks(){
             deleteButton.addEventListener('click', ()=> setEditForm(book.id))
             tdButton.appendChild(deleteButton)
 
+            const imgCover = document.createElement('img')
+            imgCover.setAttribute('id', 'img-'+book.id)
+            imgCover.setAttribute('src', book.cover)
+            tdCover.appendChild(imgCover)
+
             tr.appendChild(th)
             tr.appendChild(tdTitle)
             tr.appendChild(tdAuthor)
@@ -64,6 +73,7 @@ function listBooks(){
             tr.appendChild(tdEdition)
             tr.appendChild(tdAvaible)
             tr.appendChild(tdHolder)
+            tr.appendChild(tdCover)
             tr.appendChild(tdButton)
 
             tbody.appendChild(tr)
@@ -89,6 +99,7 @@ function saveBook(){
     let editionPut = document.getElementById('edition').value
     let avaiblePut = document.getElementById('avaible').checked
     let holderPut = document.getElementById('holder').value
+    let coverPut = document.getElementById('cover').value
 
     console.log(avaiblePut.checked)
 
@@ -97,7 +108,7 @@ function saveBook(){
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({title: titlePut, author: authorPut, pages: pagesPut, edition: editionPut, avaible: avaiblePut, holder: holderPut
+        body: JSON.stringify({title: titlePut, author: authorPut, pages: pagesPut, edition: editionPut, avaible: avaiblePut, holder: holderPut, cover: coverPut
         }),
     })
     .then(() => listBooks())
@@ -112,6 +123,7 @@ function setEditForm(id){
     document.getElementById('pages').value = document.getElementById('pages-' + id).innerHTML
     document.getElementById('author').value = document.getElementById('author-' + id).innerHTML
     document.getElementById('edition').value = document.getElementById('edition-' + id).innerHTML
+    document.getElementById('cover').value = document.getElementById('img-' + id).getAttribute('src')
 
     if(document.getElementById('avaible-'+id).innerHTML === "Yes"){
         console.log("oi")
