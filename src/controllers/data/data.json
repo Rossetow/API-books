@@ -2,63 +2,13 @@
   "Books": [
     {
       "id": 1,
-      "title": "LKNLKNKL",
-      "author": "KLLKNLKN",
-      "pages": "98989",
-      "edition": "LKNKLNLK",
-      "holder": "",
-      "avaible": false,
-      "cover": ""
-    },
-    {
-      "id": 2,
-      "title": "khkhjh",
-      "author": "nkjn",
-      "pages": "897987",
-      "edition": "bgseg",
+      "title": "Abner",
+      "author": "J. K. Rowling",
+      "pages": "423",
+      "edition": "1995",
       "avaible": true,
-      "holder": "",
-      "cover": ""
-    },
-    {
-      "id": 3,
-      "title": "hh",
-      "author": "hlk",
-      "pages": 8,
-      "edition": "kjbk",
-      "avaible": true,
-      "holder": "",
-      "cover": ""
-    },
-    {
-      "id": 4,
-      "title": "kjlkj",
-      "author": "lkklj",
-      "pages": 90,
-      "edition": "oljlj",
-      "avaible": true,
-      "holder": "",
-      "cover": ""
-    },
-    {
-      "id": 5,
-      "title": "oihjlij",
-      "author": "khkhk",
-      "pages": 7,
-      "edition": "ikjbk",
-      "avaible": true,
-      "holder": "",
-      "cover": "../images/"
-    },
-    {
-      "id": 6,
-      "title": "ohhh",
-      "author": "ohihi",
-      "pages": 77,
-      "edition": "kjbjk",
-      "avaible": true,
-      "holder": "",
-      "cover": "../img/cover1.webp"
+      "holder": "rafa",
+      "cover": "https://imgs.search.brave.com/qvrUdtJFFG5rtU8ooETj7dglU44735MP-U9CHXjrM_4/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9jYXBy/aWNoby5hYnJpbC5j/b20uYnIvd3AtY29u/dGVudC91cGxvYWRz/LzIwMTcvMDYvY2Fw/YV9oYXJyeV9wb3R0/ZXJfcGVkcmFfZmls/b3NvZmFsLmpwZz9x/dWFsaXR5PTg1JnN0/cmlwPWluZm8"
     }
   ]
 }

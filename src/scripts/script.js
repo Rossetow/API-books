@@ -54,6 +54,21 @@ function listBooks (){
             deleteButton.addEventListener('click', ()=> deleteBook(book.id))
             tdButton.appendChild(deleteButton)
 
+            const editButton = document.createElement('button')
+            editButton.setAttribute('class', "btn btn-primary")
+            editButton.textContent = 'Edit'
+            editButton.addEventListener('click', ()=> openModal(book))
+            tdButton.appendChild(editButton)
+
+            tdTitle.setAttribute('id', `title-${book.id}`)
+            tdAuthor.setAttribute('id', `author-${book.id}`)
+            tdPages.setAttribute('id', `pages-${book.id}`)
+            tdEdition.setAttribute('id', `edition-${book.id}`)
+            tdAvaible.setAttribute('id', `avaible-${book.id}`)
+            tdHolder.setAttribute('id', `holder-${book.id}`)
+            tdCover.setAttribute('id', `cover-${book.id}`)
+
+
             tr.appendChild(th)
             tr.appendChild(tdTitle)
             tr.appendChild(tdAuthor)
@@ -92,9 +107,10 @@ bookForm.addEventListener('submit', (e) => {
     const author = document.getElementById("author").value
     const pages = parseInt(document.getElementById("pages").value)
     const edition = document.getElementById("edition").value
-    const cover = document.getElementById("cover").value
+    const cover = document.getElementById('cover').value
     const avaible = true
     const holder = ""
+
     fetch('http://localhost:3000/books', {
         method: 'POST',
             headers: {
@@ -110,3 +126,65 @@ bookForm.addEventListener('submit', (e) => {
     })
     .catch(error => console.log('Error:' + error))
 })
+  
+
+function openModal(book){
+  document.getElementById('modal-container').style.display = 'flex'
+  setEditForm(book.id)
+}
+
+function closeModal(){
+  document.getElementById('modal-container').style.display = 'none'
+
+}
+
+function setEditForm(id){
+
+  document.getElementById('id-edit').value = id
+  document.getElementById('title-edit').value = document.getElementById('title-' + id).innerHTML
+  document.getElementById('author-edit').value = document.getElementById('author-' + id).innerHTML
+  document.getElementById('pages-edit').value = document.getElementById('pages-' + id).innerHTML
+  document.getElementById('author-edit').value = document.getElementById('author-' + id).innerHTML
+  document.getElementById('edition-edit').value = document.getElementById('edition-' + id).innerHTML
+  document.getElementById('cover-edit').value = document.getElementById('img-' + id).getAttribute('src')
+
+  if(document.getElementById('avaible-'+id).innerHTML === "Yes"){
+      console.log("oi")
+      document.getElementById('avaible-edit').checked = true
+  } else {
+      document.getElementById('avaible-edit').checked = false
+  }
+
+  document.getElementById('holder-edit').value = document.getElementById('holder-' + id).innerHTML
+}
+
+function saveBook(){
+
+
+  let id = parseInt(document.getElementById('id-edit').value)
+  
+  console.log(id)
+  console.log('oi')
+
+  let titlePut = document.getElementById('title-edit').value
+  let authorPut = document.getElementById('author-edit').value
+  let pagesPut = document.getElementById('pages-edit').value
+  let editionPut = document.getElementById('edition-edit').value
+  let avaiblePut = document.getElementById('avaible-edit').checked
+  let holderPut = document.getElementById('holder-edit').value
+  let coverPut = document.getElementById('cover-edit').value
+
+  console.log(avaiblePut.checked)
+
+  fetch(`http://localhost:3000/books/${id}`, {
+      method: 'PUT',
+      headers: {
+          'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({title: titlePut, author: authorPut, pages: pagesPut, edition: editionPut, avaible: avaiblePut, holder: holderPut, cover: coverPut
+      }),
+  })
+  .then(()=>closeModal())
+  .then(() => listBooks())
+  .catch(error => console.log('Error:' + error))
+}

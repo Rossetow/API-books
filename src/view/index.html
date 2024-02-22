@@ -1,78 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="stylesheet" href="../style/index.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  <link rel="stylesheet" href="../style/index.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
+
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">Poggers books system</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="index.html">Add books</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="updateBooks.html">Edit books</a>
-              </li>
-            </ul>
-          </div>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Poggers books system</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="index.html">Add books</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="updateBooks.html">Edit books</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-geral">
+    <div class="container">
+      <form id="book-form-add">
+        <div class="mb-3">
+          <label for="">Title</label>
+          <input class="form-control" type="text" name="" id="title">
         </div>
-      </nav>
 
+        <div class="mb-3">
+          <label for="">Author</label>
+          <input class="form-control" type="text" name="" id="author">
+        </div>
+
+        <div class="mb-3">
+          <label for="">Pages</label>
+          <input class="form-control" type="text" name="" id="pages">
+        </div>
+
+        <div class="mb-3">
+          <label for="">Edition</label>
+          <input class="form-control" type="text" name="" id="edition">
+        </div>
+        <div class="mb-3">
+          <label for="">Cover</label>
+          <input class="form-control" type="text" id="cover">
+        </div>
+        <button type="submit" class="btn btn-primary">Add book</button>
+      </form>
+    </div>
     <div class="container">
+      <table id="book-list" class="table table-striped-columns">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Author</th>
+            <th scope="col">Pages</th>
+            <th scope="col">Edition</th>
+            <th scope="col">Avaible</th>
+            <th scope="col">Holder</th>
+            <th scope="col">Cover</th>
+          </tr>
+        </thead>
+
+      </table>
+    </div>
+
+    <div id="modal-container">
+      <div class="container">
         <form id="book-form">
-            <div class="mb-3">
-                <label for="">Title</label>
-                <input class="form-control" type="text" name="" id="title">
-            </div>
+          <div class="mb-2">
+            <label for="">ID</label>
+            <input disabled="disabled" class="form-control form-control-sm" type="text" name="" id="id-edit">
+          </div>
+          <div class="mb-2">
+            <label for="">Title</label>
+            <input class="form-control form-control-sm" type="text" name="" id="title-edit">
+          </div>
 
-            <div class="mb-3">
-                <label for="">Author</label>
-                <input class="form-control" type="text" name="" id="author">
-            </div>
+          <div class="mb-2">
+            <label for="">Author</label>
+            <input class="form-control form-control-sm" type="text" name="" id="author-edit">
+          </div>
 
-            <div class="mb-3">
-                <label for="">Pages</label>
-                <input class="form-control" type="text" name="" id="pages">
-            </div>
+          <div class="mb-2">
+            <label for="">Pages</label>
+            <input class="form-control form-control-sm" type="text" name="" id="pages-edit">
+          </div>
 
-            <div class="mb-3">
-                <label for="">Edition</label>
-                <input class="form-control" type="text" name="" id="edition">
-            </div>
-            <div class="mb-3">
-                <label for="">Cover</label>
-                <input class="form-control" type="text" id="cover">
-            </div>
-            <button type="submit" class="btn btn-primary">Add book</button>
+          <div class="mb-2">
+            <label for="">Edition</label>
+            <input class="form-control form-control-sm" type="text" name="" id="edition-edit">
+          </div>
+          <div class="mb-2">
+            <label for="">Avaible</label>
+            <input class="form-check-input" type="checkbox" name="" id="avaible-edit">
+          </div>
+          <div class="mb-2">
+            <label for="">Holder</label>
+            <input class="form-control form-control-sm" type="text" name="" id="holder-edit">
+          </div>
+          <div class="mb-2">
+            <label for="">Cover</label>
+            <input class="form-control form-control-sm" type="text" name="" id="cover-edit">
+          </div>
+          <div class="container-button">
+            <button onclick="saveBook()" class="btn btn-primary">Save</button>
+            <button class="btn btn-danger" onclick="closeModal()">Cancel</button>
+          </div>
         </form>
+      </div>
     </div>
-    <div class="container">
-        <table  id="book-list" class="table table-striped-columns">
-            <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Title</th>
-                  <th scope="col">Author</th>
-                  <th scope="col">Pages</th>
-                  <th scope="col">Edition</th>
-                  <th scope="col">Avaible</th>
-                  <th scope="col">Holder</th>
-                  <th scope="col">Cover</th>
-                </tr>
-            </thead>
-            
-        </table>
-    </div>
-    <script src="../scripts/script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  </div>
+
+
+  <script src="../scripts/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
 </body>
+
 </html>
