@@ -17,15 +17,12 @@ server.use('/docs', swagger.serve, swagger.setup(swaggerPath))
 
 let idBook 
 
-console.log(data.Books.length + "esse é o length")
-
 if(data.Books.length === 0){
     idBook = 1
 } else {
     idBook = data.Books[data.Books.length - 1].id + 1
 }
 
-console.log(idBook)
 
 server.listen(3000, () => {
     console.log('O server está online')
@@ -33,7 +30,6 @@ server.listen(3000, () => {
 
 server.post('/books', (req, res) => {
     const newBook = req.body
-    console.log(newBook)
 
     if(!newBook.title || !newBook.author || newBook.pages<=0 || !newBook.edition){
         return res.status(400).json({message: "Invalid book, check informations"})
@@ -67,9 +63,7 @@ server.put('/books/:id', (req, res) => {
     const bookId = parseInt(req.params.id)
     const modifyBook = req.body
     const indexBook = data.Books.findIndex(book => book.id === bookId)
-    console.log("chegou aqui")
 
-    console.log(modifyBook)
     if(indexBook === -1)
         return res.status(404).json({message: "Book not found"})
 
@@ -102,7 +96,6 @@ server.delete('/books/:id', (req, res) => {
 
     let idAtt = 1
     data.Books.forEach(element => {
-        console.log('oi, atualizadno')
         element.id = idAtt
         idAtt++
     });

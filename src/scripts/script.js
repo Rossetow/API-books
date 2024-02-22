@@ -100,9 +100,6 @@ function deleteBook (id){
 
 bookForm.addEventListener('submit', (e) => {
     e.preventDefault();
-
-    console.log(document.getElementById('cover'))
-
     const title = document.getElementById("title").value
     const author = document.getElementById("author").value
     const pages = parseInt(document.getElementById("pages").value)
@@ -150,7 +147,6 @@ function setEditForm(id){
   document.getElementById('cover-edit').value = document.getElementById('img-' + id).getAttribute('src')
 
   if(document.getElementById('avaible-'+id).innerHTML === "Yes"){
-      console.log("oi")
       document.getElementById('avaible-edit').checked = true
   } else {
       document.getElementById('avaible-edit').checked = false
@@ -163,9 +159,6 @@ function saveBook(){
 
 
   let id = parseInt(document.getElementById('id-edit').value)
-  
-  console.log(id)
-  console.log('oi')
 
   let titlePut = document.getElementById('title-edit').value
   let authorPut = document.getElementById('author-edit').value
@@ -175,7 +168,6 @@ function saveBook(){
   let holderPut = document.getElementById('holder-edit').value
   let coverPut = document.getElementById('cover-edit').value
 
-  console.log(avaiblePut.checked)
 
   fetch(`http://localhost:3000/books/${id}`, {
       method: 'PUT',
