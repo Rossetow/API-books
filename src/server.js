@@ -22,7 +22,7 @@ console.log(data.Books.length + "esse é o length")
 if(data.Books.length === 0){
     idBook = 1
 } else {
-    idBook = data.Books[data.Books.length - 1].id
+    idBook = data.Books[data.Books.length - 1].id + 1
 }
 
 console.log(idBook)

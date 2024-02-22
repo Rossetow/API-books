@@ -117,7 +117,7 @@ bookForm.addEventListener('submit', (e) => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({id: null, title: title, author: author, pages: pages, edition: edition, avaible: avaible, holder: holder, cover: cover
+            body: JSON.stringify({id: null, title, author, pages, edition, avaible, holder, cover
             }),
     })
     .then(response => response.json())
@@ -125,7 +125,7 @@ bookForm.addEventListener('submit', (e) => {
         listBooks();
         bookForm.reset();
     })
-    .catch(error => console.log(error), window.alert("Fill the data correctly!"))
+    .catch(error => (console.log(error), window.alert("Fill the data correctly!")))
 })
   
 
