@@ -17,6 +17,7 @@ server.use('/docs', swagger.serve, swagger.setup(swaggerPath))
 
 let idBook 
 
+console.log(data.Books.length + "esse é o length")
 
 if(data.Books.length === 0){
     idBook = 1
@@ -37,8 +38,8 @@ server.post('/books', (req, res) => {
     if(!newBook.title || !newBook.author || newBook.pages<=0 || !newBook.edition){
         return res.status(400).json({message: "Invalid book, check informations"})
     } else {
-        idBook++
         newBook.id = idBook
+        idBook++
         data.Books.push(newBook)
         saveData(data)
 

@@ -1,4 +1,4 @@
-const bookForm = document.getElementById("book-form")
+const bookForm = document.getElementById("book-form-add")
 const bookList = document.getElementById("book-list")
 
 let tbody = document.createElement('tbody')
@@ -111,6 +111,7 @@ bookForm.addEventListener('submit', (e) => {
     const avaible = true
     const holder = ""
 
+
     fetch('http://localhost:3000/books', {
         method: 'POST',
             headers: {
@@ -124,7 +125,7 @@ bookForm.addEventListener('submit', (e) => {
         listBooks();
         bookForm.reset();
     })
-    .catch(error => console.log('Error:' + error))
+    .catch(error => console.log(error), window.alert("Fill the data correctly!"))
 })
   
 
