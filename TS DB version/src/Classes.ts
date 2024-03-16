@@ -55,8 +55,28 @@ export class SistemaBiblioteca {
             await executeDatabaseQuery(`
                 INSERT INTO Livros (titulo, autor, anoPulicacao, quantidadeDisponivel, paginas) VALUES (?, ?, ?, ?, ?);
             `, [livro.titulo, livro.autor, livro.anoPublicacao, livro.quantidadeDisponivel, livro.paginas])
-            console.log(`\n Livro: ${livro.titulo} inserido com sucesso`)
+            console.log(`\n Livro: ${livro.titulo} cadastrado com sucesso`)
         } catch(e) {
+            console.log("Erro:", e)
+        }
+    }
+
+    cadastrarUsuarios(): void {
+        let nome: string = leitor.question("Informe o nome do usuário: ")
+        let email: string = leitor.question("Informe o email do usuário: ")
+
+        let usuario: Usuario = new Usuario(nome, email)
+
+        this.criarUsuarioBanco(usuario)
+    }
+
+    async criarUsuarioBanco(usuario: Usuario): Promise<void> { 
+        try {
+            executeDatabaseQuery(`
+            INSERT INTO Usuarios (nome, email) VALUES (?, ?);
+            `, [usuario.nome, usuario.email])
+            console.log(`\n Usuário: ${usuario.nome} cadastrado com sucesso`)
+        } catch (e) {
             console.log("Erro:", e)
         }
     }
@@ -70,3 +90,4 @@ async function executeDatabaseQuery(query: string, params: any[]): Promise<any> 
         console.log("Erro:", e)
     }
 }
+
