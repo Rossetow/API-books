@@ -1,9 +1,9 @@
 {
   "name": "trabalho-backend-web-ts",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "npx tsc && node ./build/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -11,6 +11,10 @@
   "dependencies": {
     "mariadb": "^3.2.3",
     "readline-sync": "^1.4.10",
-    "typescript": "^5.4.2"
-  }
+    "typescript": "^5.4.3"
+  },
+  "devDependencies": {
+    "@types/readline-sync": "^1.4.8"
+  },
+  "description": ""
 }

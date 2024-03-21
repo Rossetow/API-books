@@ -13,7 +13,7 @@ const banco = mariadb.createPool({
 export default banco;
 
 banco.execute(`
-    CREATE DATABASE IF NOT EXISTS Biblioteca
+    CREATE DATABASE IF NOT EXISTS Biblioteca;
 `)
 
 banco.execute(`
@@ -35,6 +35,7 @@ banco.execute(`
 `)
 
 banco.execute(`
+    CREATE TABLE sistemaBiblioteca
     id_biblioteca INT AUTO_INCREMENT PRIMARY_KEY,
     id_usuario INT NOT NULL,
     id_livro INT NOT NUL,
